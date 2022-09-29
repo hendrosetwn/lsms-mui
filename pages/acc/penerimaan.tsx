@@ -14,7 +14,7 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import React, { useState } from "react";
-import { blue } from "@mui/material/colors";
+import { blue, grey } from "@mui/material/colors";
 
 interface DataPenerimaan {
   tanggal: string;
@@ -208,230 +208,91 @@ const Penerimaan = (props: { row: ReturnType<typeof createDataStock> }) => {
   const [collapseButton, setCollapseButton] = useState<string>("+");
   const [open, setOpen] = useState<boolean>(false);
 
+  const Column = {
+    firstTopHeader: [
+      { title: "", row: 2, col: 0 },
+      { title: "Tgl Penerimaan", row: 2, col: 0 },
+      { title: "waktu_ukur Penerimaan", row: 2, col: 0 },
+      { title: "Location", row: 2, col: 0 },
+      { title: "Shipment/BL No.", row: 2, col: 0 },
+      { title: "Bill of Lading (BL)", row: 1, col: 7 },
+      { title: "Actual Receipt (AR)", row: 1, col: 7 },
+      { title: "Status", row: 2, col: 0 },
+      { title: "Action", row: 2, col: 0 },
+    ],
+    firstBottomHeader: [
+      { title: "LObs", row: 1, col: 0 },
+      { title: "L15", row: 1, col: 0 },
+      { title: "Pound", row: 1, col: 0 },
+      { title: "Gallon", row: 1, col: 0 },
+      { title: "Barrel", row: 1, col: 0 },
+      { title: "MT", row: 1, col: 0 },
+      { title: "LT", row: 1, col: 0 },
+    ],
+    secHeader: [
+      { title: "" },
+      { title: "Jenis Ukur" },
+      { title: "Waktu Ukur" },
+      { title: "Tangki" },
+      { title: "Material" },
+      { title: "Level Minyak" },
+      { title: "Suhu Dalam" },
+      { title: "Suhu Luar" },
+      { title: "Density Obs" },
+      { title: "Liter Obs" },
+      { title: "Liter15" },
+      { title: "Pound" },
+      { title: "Gallon" },
+      { title: "Barrel" },
+      { title: "MT" },
+      { title: "LT" },
+      { title: "Juru Ukur" },
+    ],
+  };
+
   return (
-    <React.Fragment
-    // sx={{ maxHeight: 440, maxWidth: "80%", marginLeft: "10%", marginTop: 5 }}
-    >
+    <React.Fragment>
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
-            <TableCell
-              align="center"
-              rowSpan={2}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            ></TableCell>
-            <TableCell
-              align="center"
-              rowSpan={2}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              <TableSortLabel> Tgl Penerimaan</TableSortLabel>
-            </TableCell>
-            <TableCell
-              align="center"
-              rowSpan={2}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              waktu_ukur Penerimaan
-            </TableCell>
-
-            <TableCell
-              align="center"
-              rowSpan={2}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Location
-            </TableCell>
-            <TableCell
-              align="center"
-              rowSpan={2}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Shipment/BL No.
-            </TableCell>
-            <TableCell
-              align="center"
-              colSpan={7}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Bill of Lading (BL)
-            </TableCell>
-            <TableCell
-              align="center"
-              colSpan={7}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Actual Receipt (AR)
-            </TableCell>
-            <TableCell
-              align="center"
-              rowSpan={2}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Status
-            </TableCell>
-            <TableCell
-              align="center"
-              rowSpan={2}
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Action
-            </TableCell>
+            {Column.firstTopHeader.map((data) => (
+              <TableCell
+                align="center"
+                rowSpan={data.row}
+                colSpan={data.col}
+                sx={{
+                  bgcolor: grey[100],
+                  border: "1px solid #9e9e9e",
+                }}
+              >
+                {data.title}
+              </TableCell>
+            ))}
           </TableRow>
+
           <TableRow>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              LObs
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              L15
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Pound
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Gallon
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Barrel
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              MT
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              LT
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              LObs
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              L15
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Pound
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Gallon
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              Barrel
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              MT
-            </TableCell>
-            <TableCell
-              align="center"
-              sx={{
-                bgcolor: "background.paper",
-                boxShadow: 1,
-              }}
-            >
-              LT
-            </TableCell>
+            {Column.firstBottomHeader.map((data) => (
+              <TableCell
+                align="center"
+                sx={{
+                  bgcolor: grey[100],
+                  border: "1px solid #9e9e9e",
+                }}
+              >
+                {data.title}
+              </TableCell>
+            ))}
+            {Column.firstBottomHeader.map((data) => (
+              <TableCell
+                align="center"
+                sx={{
+                  bgcolor: grey[100],
+                  border: "1px solid #9e9e9e",
+                }}
+              >
+                {data.title}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -449,13 +310,6 @@ const Penerimaan = (props: { row: ReturnType<typeof createDataStock> }) => {
                 >
                   {collapseButton}
                 </Button>
-                {/* <IconButton
-                  aria-label="expand row"
-                  size="small"
-                  onClick={() => setOpen(!open)}
-                >
-                  {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                </IconButton> */}
               </TableCell>
               <TableCell>{data.tanggal}</TableCell>
               <TableCell>{data.kode}</TableCell>
@@ -480,28 +334,22 @@ const Penerimaan = (props: { row: ReturnType<typeof createDataStock> }) => {
             </TableRow>
           ))}
           <TableRow>
-            <TableCell colSpan={30}>
+            <TableCell colSpan={30} sx={{ borderBottom: "none" }}>
               <Collapse in={open} timeout="auto" unmountOnExit>
                 <Table size="small">
                   <TableHead>
                     <TableRow>
-                      <TableCell></TableCell>
-                      <TableCell>Jenis Ukur</TableCell>
-                      <TableCell>Waktu Ukur</TableCell>
-                      <TableCell>Tangki</TableCell>
-                      <TableCell>Material</TableCell>
-                      <TableCell>Level Minyak</TableCell>
-                      <TableCell>Suhu Dalam</TableCell>
-                      <TableCell>Suhu Luar</TableCell>
-                      <TableCell>Density Obs</TableCell>
-                      <TableCell>Liter Obs</TableCell>
-                      <TableCell>Liter15</TableCell>
-                      <TableCell>Pound</TableCell>
-                      <TableCell>Gallon</TableCell>
-                      <TableCell>Barrel</TableCell>
-                      <TableCell>MT</TableCell>
-                      <TableCell>LT</TableCell>
-                      <TableCell>Juru Ukur</TableCell>
+                      {Column.secHeader.map((data) => (
+                        <TableCell
+                          align="center"
+                          sx={{
+                            bgcolor: grey[100],
+                            border: "1px solid #9e9e9e",
+                          }}
+                        >
+                          {data.title}
+                        </TableCell>
+                      ))}
                     </TableRow>
                   </TableHead>
                   <TableBody>
