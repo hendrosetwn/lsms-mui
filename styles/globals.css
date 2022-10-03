@@ -15,6 +15,34 @@ a {
   box-sizing: border-box;
 }
 
+.border__table--buffer {
+  position: relative;
+}
+
+.border__table--buffer:after {
+  content: "";
+  height: 14px;
+  width: 1px;
+
+  position: absolute;
+  right: 0;
+  top: 42.5%;
+
+  background-color: #e0e0e0;
+}
+
+.border__table--buffer:before {
+  content: "";
+  height: 14px;
+  width: 1px;
+
+  position: absolute;
+  left: 0;
+  top: 42.5%;
+
+  background-color: #e0e0e0;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     /* color-scheme: dark; */
